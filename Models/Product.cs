@@ -23,12 +23,11 @@ namespace EF_Assignment.Models
             this.v3 = v3;
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductId { get; set; }
         public string ProductName { get; set; }
 
         public int ProductPrice { get; set; }
 
-        //public List<Order> Orders { get; set; }
+        public List<OrderProduct> ProductsOrdered { get; set; }
     }
 }

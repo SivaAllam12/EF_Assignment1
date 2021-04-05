@@ -21,40 +21,49 @@ namespace EF_Assignment.Controllers
         {
             //creating product book
             Product book=new Product();
-            book.ProductId = 1;
             book.ProductName = "book";
             book.ProductPrice = 20;
 
-            //creating product pen
-            Product Pen = new Product(2, "pen", 10);
-
-            
-            //first product of order
-            OrderProduct _ordprod1 = new OrderProduct();
-            _ordprod1.orderId = 123;
-            _ordprod1.productId = 1;
-            //second product of order
-            OrderProduct _ordprod2 = new OrderProduct();
-            _ordprod2.orderId = 123;
-            _ordprod2.productId = 2;
-
-            //create list of order products
-            List<OrderProduct> _ordprod = new List<OrderProduct>();
-            _ordprod.Add(_ordprod1);
-            _ordprod.Add(_ordprod2);
+            ////creating product pen
+            //Product Pen = new Product();
+            //Pen.ProductName = "pen";
+            //Pen.ProductPrice = 10;
 
             //creating order data
             Order _order = new Order();
-            _order.OrderId = 1234;
             _order.OrderName = "first order";
-            _order.OrderProducts = _ordprod;
+
+
+            //first product of order
+            OrderProduct _ordprod1 = new OrderProduct();
+            _ordprod1.OrderedProduct = book;
+            _ordprod1.ProductsOrdered = _order;
+            _ordprod1.OrderDate = DateTime.Now;
+
+
+
+            ////second product of order
+            //OrderProduct _ordprod2 = new OrderProduct();
+            //_ordprod2.OrderedProduct = Pen;
+            //_ordprod2.ProductsOrdered = _order;
+            //_ordprod2.OrderDate = DateTime.Now;
+
+          
+
+ 
 
             DbDomain d = new DbDomain(_context);
+             
             //Add to Product table
             d.ProdPost(book);
-            d.ProdPost(Pen);
+            //d.ProdPost(Pen);
+
             //Add to Order table
             d.OrderPost(_order);
+
+            //add to order products
+            d.OrdProd(_ordprod1);
+            //d.OrdProd(_ordprod2);
 
             return View(_order);
         }

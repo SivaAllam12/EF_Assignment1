@@ -9,11 +9,8 @@ namespace EF_Assignment.Models
 {
     public class Order
     {
-        [Key]
-
         public int OrderId { get; set; }
         public string OrderName { get; set; }
-        [NotMapped]
-        public List<OrderProduct> OrderProducts { get; set; }
+        public List<OrderProduct> OrderedProducts { get; set; }
     }
 }

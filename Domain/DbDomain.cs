@@ -31,5 +31,11 @@ namespace EF_Assignment.Domain
             _context.SaveChanges();
 
         }
+        public void OrdProd(OrderProduct op)
+        {
+            _context.OrderProducts.Add(op);
+
+            _context.SaveChanges();
+        }
     }
 }

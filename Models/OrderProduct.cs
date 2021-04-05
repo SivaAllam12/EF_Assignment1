@@ -8,20 +8,16 @@ using System.Threading.Tasks;
 
 namespace EF_Assignment.Models
 {
-    public class OrderProduct:DbContext
+    public class OrderProduct
     {
         public OrderProduct()
         {
 
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<OrderProduct>()
-                .HasKey(o => new { o.orderId, o.productId });
-        }
-        //[Key, Column(Order = 0)]
-        public int orderId { get; set; }
-        //[Key, Column(Order = 1)]
-        public int productId { get; set; }
+        public int Id { get; set; }
+        public Order ProductsOrdered { get; set; }
+        public Product OrderedProduct { get; set; }
+
+        public DateTime OrderDate { get; set; }
     }
 }
