@@ -17,6 +17,7 @@ namespace EF_Assignment.Models
         public int Id { get; set; }
         public Order ProductsOrdered { get; set; }
         public Product OrderedProduct { get; set; }
+        public int Quantity { get; set; }
 
         public DateTime OrderDate { get; set; }
     }
